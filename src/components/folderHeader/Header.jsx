@@ -17,7 +17,7 @@ function Header() {
   return (
     <header className={style['wrapper']}>
       <div className={style['label']}>
-        <Link className={style['label__link']} to='/6_MomMegan'>
+        <Link className={style['label__link']} to='/6_MomMeganTS'>
           <div className={style['label__images']}>
             <img
               className={style['label__images-item']}
@@ -36,7 +36,7 @@ function Header() {
 
       <div className={style['basket-button']}>
         <Link
-          to='/6_MomMegan/CartPage'
+          to='/6_MomMeganTS/CartPage'
           className={style['basket-button__item']}
         >
           <span className={style['basket-button__price']}>

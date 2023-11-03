@@ -11,7 +11,7 @@ function ButtonGroup({ styleName }) {
 
   return (
     <div className={`${style['wrapper']} ${style[styleName]}`}>
-      <Link to='/6_MomMegan' className={style['link']}>
+      <Link to='/6_MomMeganTS' className={style['link']}>
         <Button
           nameBtn={'Вернуться назад'}
           nameStyle={['button_v5', 'button-icon_v4', 'button-name_v1']}
