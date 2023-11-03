@@ -1,0 +1,125 @@
+.warper {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  box-shadow: rgba(221, 221, 221, 0.5) 0px 7px 29px 0px;
+  border: 1px solid rgba(221, 221, 221, 0.5);
+  border-radius: 10px;
+}
+
+.image {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+.title-text {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  padding-right: 10px;
+  font-size: 20px;
+  font-weight: 900;
+  white-space: nowrap;
+  letter-spacing: 1%;
+  text-overflow: ellipsis;
+  color: var(--gray4);
+}
+
+.title-text:hover {
+  overflow: auto;
+  max-height: 50px;
+  white-space: initial;
+}
+
+.title-rating {
+  font-size: 20px;
+  font-weight: 700;
+  opacity: 0.6;
+  color: var(--gray4);
+}
+
+.title-stars {
+  width: 20px;
+  height: 12px;
+  padding-right: 2px;
+  opacity: 0.6;
+  fill: var(--gray4);
+}
+
+.selector {
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 6px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  color: var(--gray4);
+  background-color: var(--light-gray6);
+  border-radius: 10px;
+}
+
+.list {
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.list:first-of-type {
+  margin-bottom: 6px
+}
+
+.list-item {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.active {
+  background: white;
+  -webkit-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+  border-radius: 5px;
+  cursor: auto;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 6px;
+
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: 0.015em;
+  color: var(--gray4);
+}
+
+@media (max-width: 410px) {
+  .price {
+    font-size: 18px;
+  }
+}

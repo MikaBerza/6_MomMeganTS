@@ -1,0 +1,24 @@
+.title {
+  text-align: center;
+}
+
+.title-item {
+  padding: 40px 0;
+  color: var(--gray4);
+}
+
+.title-item-error {
+  color: var(--tomato-color);
+}
+
+.title-item-empty {
+  color: var(--tomato-color);
+}
+
+@media (max-width: 1024px) {
+
+  .title-item-error,
+  .title-item-empty {
+    font-size: 36px;
+  }
+}

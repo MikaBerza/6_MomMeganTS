@@ -1,0 +1,14 @@
+.title {
+  padding-top: 20px;
+  font-size: 48px
+}
+
+.emoji {
+  display: inline-block;
+  font-size: 60px;
+}
+
+.description {
+  padding-top: 10px;
+  font-size: 22px;
+}

@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+}
+
+.link {
+  display: contents;
+}
+
+.hide-element {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    flex-direction: column-reverse;
+    max-width: 210px;
+    height: 150px;
+    margin: 40px auto 0;
+  }
+}

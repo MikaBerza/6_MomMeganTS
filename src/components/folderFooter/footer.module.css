@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin: 40px 0;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.8;
+  color: var(--dark-gray4);
+  background-color: var(--light-gray1);
+}
+
+.text {
+  display: flex;
+  align-items: center;
+}
+
+.text-link {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 1s ease;
+}
+
+.logo-link {
+  display: block;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.text-link path {
+  transition: fill 1s ease;
+}
+
+.text-link:hover {
+  border-bottom: 1px solid red;
+}
+
+.text-link:hover path {
+  fill: red;
+}

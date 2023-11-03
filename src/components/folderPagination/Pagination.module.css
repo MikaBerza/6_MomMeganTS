@@ -1,0 +1,57 @@
+.page-navigation {
+  padding-top: 60px;
+}
+
+.pages-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.page-link {
+  display: inline-block;
+  padding: 12px;
+  background-color: var(--light-gray1);
+  border: 1px solid var(--gray4);
+  border-radius: 4px;
+
+  transition: background-color .2s ease, transform 0.2s;
+  cursor: pointer;
+}
+
+.page-link:hover {
+  background-color: var(--light-gray2);
+}
+
+.page-link:active {
+  color: var(--light-gray1);
+  background-color: var(--gray4);
+  /* свойства для эффекта смещения */
+  transform: translateY(2px);
+}
+
+section.wrapper nav ul.pages-list li:first-of-type .page-link,
+section.wrapper nav ul.pages-list li:last-of-type .page-link {
+  min-width: 100px;
+}
+
+.active {
+  color: var(--light-gray1);
+  background-color: var(--gray4);
+  border-radius: 4px;
+}
+
+.active:hover {
+  color: var(--light-gray1);
+  background-color: var(--gray4);
+  border-radius: 4px;
+}
+
+.active:active {
+  /* свойства для эффекта смещения */
+  transform: translateY(0px);
+}

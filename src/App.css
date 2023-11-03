@@ -1,0 +1,217 @@
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url("./assets/fonts/ProximaNova-Black.eot");
+  src: local("./assets/fonts/Proxima Nova Black"), local("ProximaNova-Black"), url("./assets/fonts/ProximaNova-Black.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/ProximaNova-Black.woff") format("woff"), url("./assets/fonts/ProximaNova-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url("./assets/fonts/ProximaNova-Bold.eot");
+  src: local("./assets/fonts/Proxima Nova Bold"), local("ProximaNova-Bold"), url("./assets/fonts/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/ProximaNova-Bold.woff") format("woff"), url("./assets/fonts/ProximaNova-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url("./assets/fonts/ProximaNova-Regular.eot");
+  src: local("./assets/fonts/Proxima Nova Regular"), local("ProximaNova-Regular"), url("./assets/fonts/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/ProximaNova-Regular.woff") format("woff"), url("./assets/fonts/ProximaNova-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url("./assets/fonts/ProximaNova-Extrabld.eot");
+  src: local("./assets/fonts/Proxima Nova Extrabold"), local("ProximaNova-Extrabld"), url("./assets/fonts/ProximaNova-Extrabld.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/ProximaNova-Extrabld.woff") format("woff"), url("./assets/fonts/ProximaNova-Extrabld.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal
+}
+
+:root {
+  --light-gray1: #f9f9f9;
+  --light-gray2: #f4f4f4;
+  --light-gray3: #ececec;
+  --light-gray4: #ddd;
+  --light-gray5: #f6f6f6;
+  --light-gray6: #f3f3f3;
+  --light-gray7: #dbdbdb;
+  --dark-gray1: #232323;
+  --dark-gray2: #282828;
+  --dark-gray3: #111;
+  --dark-gray4: #181818;
+  --gray1: #8d8d8d;
+  --gray2: #777777;
+  --gray3: #7b7b7b;
+  --gray4: #444;
+  --black1: #000000;
+  --tomato-color: rgba(255, 99, 71, 0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Lucida Console', 'Proxima Nova', Roboto, system-ui, Tahoma, sans-serif;
+  outline: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+
+body {
+  padding: 0 50px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--dark-gray1);
+  background-color: var(--light-gray1)
+}
+
+a,
+span,
+p,
+b,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--dark-gray1)
+}
+
+h1 {
+  font-size: 48px
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 30px
+}
+
+a {
+  text-decoration: none
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1920px;
+  min-height: 100vh;
+  margin: 50px auto 0;
+  padding: 20px 100px 60px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.product-gallery {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 65px;
+}
+
+.filtering-and-sorting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination {
+  margin: auto;
+}
+
+.not-found {
+  height: 70vh;
+  padding-top: 20vh;
+}
+
+.not-visible-element {
+  visibility: hidden;
+}
+
+/* 
+___ Эти стили применяю если у сервера превышен лимит по запросам      
+<h4
+  className={
+    category === 1
+      ? `${style['card__title-text']} category1`
+      : category === 2
+      ? `${style['card__title-text']} category2`
+      : category === 3
+      ? `${style['card__title-text']} category3`
+      : category === 4
+      ? `${style['card__title-text']} category4`
+      : category === 5
+      ? `${style['card__title-text']} category5`
+      : ''
+  }>
+  {title}
+  </h4> 
+*/
+
+/* Мужская обувь */
+/* .category1 {
+  color: blue;
+} */
+/* Женская обувь */
+/* .category2 {
+  color: red;
+} */
+/* Детская обувь */
+/* .category3 {
+  color: yellowgreen;
+} */
+/* Головные уборы */
+/* .category4 {
+  color: blueviolet;
+} */
+/* Перчатки */
+/* .category5 {
+  color: orange;
+} */
+/*___ Эти стили применяю если у сервера превышен лимит по запросам */
+
+@media (max-width: 1680px) {
+  .wrapper {
+    padding: 0 20px 20px;
+  }
+
+  .filtering-and-sorting {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .product-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1196px) {
+  .wrapper {
+    margin-top: 20px;
+  }
+
+  .product-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 837px) {
+  body {
+    padding: 0 20px;
+  }
+
+  .product-gallery {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

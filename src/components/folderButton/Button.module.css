@@ -1,0 +1,85 @@
+.button {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  background-color: var(--light-gray1);
+  border: 1px solid var(--gray4);
+  border-radius: 4px;
+
+  transition: background-color .2s ease, transform 0.2s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--light-gray2);
+}
+
+.button:active {
+  background-color: var(--gray4);
+  /* свойства для эффекта смещения */
+  transform: translateY(2px);
+}
+
+.button-icon {
+  width: 14px;
+  fill: var(--gray4);
+}
+
+.button-name {
+  padding: 0 3px 0 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--gray4);
+}
+
+.button:active .button-icon {
+  fill: var(--light-gray1);
+}
+
+.button:active .button-name {
+  color: var(--light-gray1);
+}
+
+
+/* Вариант 1 кнопки */
+.button_v1 {
+  padding: 12px;
+}
+
+/* Вариант 2 кнопки */
+.button_v2 {
+  padding: 20px 40px;
+}
+
+.button-icon_v2 path:first-of-type,
+.button-name_v2 {
+  display: none;
+}
+
+/* Вариант 3 кнопки */
+.button-icon_v3 {
+  transform: rotate(45deg);
+}
+
+/* Вариант 4 кнопки */
+.button-icon_v4 path:first-child {
+  transform: translateX(7px) translateY(-4px) rotate(55deg);
+}
+
+.button-icon_v4 path:last-child {
+  transform: translateX(4px) translateY(0.5px) rotate(30deg);
+}
+
+/* Вариант 5 кнопки */
+.button_v5 {
+  margin: 12px 0;
+  padding: 12px;
+}
+
+.button-icon_v5 path:first-child {
+  transform: translateX(9.5px) translateY(7px) rotate(150deg);
+}
+
+.button-icon_v5 path:last-child {
+  transform: translateX(0px) translateY(7px) rotate(-60deg);
+}

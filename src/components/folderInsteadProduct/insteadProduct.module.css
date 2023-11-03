@@ -1,0 +1,23 @@
+.img {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+}
+
+.img-item {
+  width: 60%;
+  border-radius: 60px;
+}
+
+@media (max-width: 1024px) {
+  .img-item {
+    width: 70%;
+  }
+}
+
+@media (max-width: 670px) {
+  .img-item {
+    width: 90%;
+  }
+}

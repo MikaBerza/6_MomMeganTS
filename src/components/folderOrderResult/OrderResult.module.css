@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 60px;
+}
+
+.in-total,
+.amount {
+  padding: 10px;
+  font-size: 22px;
+}
+
+.number {
+  color: var(--black1);
+}
+
+@media (max-width: 500px) {
+  .wrapper {
+    align-items: baseline;
+    flex-direction: column;
+  }
+}
