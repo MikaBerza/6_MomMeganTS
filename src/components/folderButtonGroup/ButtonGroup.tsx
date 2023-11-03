@@ -1,10 +1,13 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import style from './ButtonGroup.module.css';
 import Button from '../folderButton/Button';
 
-function ButtonGroup({ styleName }) {
+type ButtonGroupProps = {
+  styleName: string;
+};
+
+const ButtonGroup: React.FC<ButtonGroupProps> = ({ styleName }) => {
   if (styleName === undefined) {
     styleName = '';
   }
@@ -23,6 +26,6 @@ function ButtonGroup({ styleName }) {
       />
     </div>
   );
-}
+};
 
 export default ButtonGroup;

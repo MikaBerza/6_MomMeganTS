@@ -4,8 +4,8 @@ import style from './Button.module.css';
 
 type ButtonProps = {
   nameBtn: string;
-  nameStyle: number[];
-  handleClick: () => void;
+  nameStyle: string[];
+  handleClick?: () => void;
 };
 
 const Button: React.FC<ButtonProps> = ({ nameBtn, nameStyle, handleClick }) => {
