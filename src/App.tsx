@@ -35,12 +35,15 @@ function App() {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (filteringId, sortId, searchValue) из состояния,
      с помощью селектора sortingAndFilteringSlice */
+  // ПОТОМ УБРАТЬ state: any!!!!!!!!____________________
   const { filteringId, sortId, searchValue } = useSelector(
-    (state) => state.sortingAndFilteringSlice
+    (state: any) => state.sortingAndFilteringSlice
   );
-  const { currentPage } = useSelector((state) => state.paginationSlice);
+  // ПОТОМ УБРАТЬ state: any!!!!!!!!____________________
+  const { currentPage } = useSelector((state: any) => state.paginationSlice);
+  // ПОТОМ УБРАТЬ state: any!!!!!!!!____________________
   const { productCounter, priceCounter, cartData } = useSelector(
-    (state) => state.cartOfProductsSlice
+    (state: any) => state.cartOfProductsSlice
   );
 
   React.useEffect(() => {
@@ -116,7 +119,7 @@ function App() {
       <div className='wrapper'>
         <Header />
         <Routes>
-          <Route exact path='/6_MomMegan' element={<HomePage />} />
+          <Route path='/6_MomMegan' element={<HomePage />} />
           <Route path='/6_MomMegan/CartPage' element={<CartPage />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
