@@ -1,7 +1,14 @@
 import React from 'react';
+
 import style from './Button.module.css';
 
-function Button({ nameBtn, nameStyle, handleClick }) {
+type ButtonProps = {
+  nameBtn: string;
+  nameStyle: number[];
+  handleClick: () => void;
+};
+
+const Button: React.FC<ButtonProps> = ({ nameBtn, nameStyle, handleClick }) => {
   return (
     <button
       className={`${style['button']} ${style[`${nameStyle[0]}`]}`}
@@ -21,6 +28,6 @@ function Button({ nameBtn, nameStyle, handleClick }) {
       </span>
     </button>
   );
-}
+};
 
 export default Button;
