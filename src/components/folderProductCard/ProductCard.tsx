@@ -21,13 +21,8 @@ type ProductCardProps = {
   rating: number;
 };
 
-const ProductCard: React.FC<ProductCardProps> = ({
-  imageUrl,
-  title,
-  types,
-  sizes,
-  price,
-  rating,
+const ProductCard: React.FC<{ dataItem: ProductCardProps }> = ({
+  dataItem,
 }) => {
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
@@ -45,11 +40,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
     // формируем, данные добавленного товара в корзину
     const dataOfTheAddedProduct = {
       id: uuidv4(),
-      imageUrl: imageUrl,
-      title: title,
-      types: types[activeType],
-      sizes: sizes[activeSize],
-      price: price,
+      imageUrl: dataItem.imageUrl,
+      title: dataItem.title,
+      types: dataItem.types[activeType],
+      sizes: dataItem.sizes[activeSize],
+      price: dataItem.price,
     };
     // копируем данные товара с помощью оператора spread
     const copyCartData = [...cartData];
@@ -59,7 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
     // записываем новые значения счетчиков в константы
     const updatedProductCounter = productCounter + 1;
-    const updatePriceCounter = priceCounter + price;
+    const updatePriceCounter = priceCounter + dataItem.price;
     // обновляем значения счетчиков товаров и цен
     dispatch(setProductCounter(updatedProductCounter));
     dispatch(setPriceCounter(updatePriceCounter));
@@ -67,9 +62,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
   return (
     <div className={style['warper']}>
-      <img className={style['image']} src={imageUrl} alt='product' />
+      <img className={style['image']} src={dataItem.imageUrl} alt='product' />
       <div className={style['title']}>
-        <h4 className={style['title-text']}>{title}</h4>
+        <h4 className={style['title-text']}>{dataItem.title}</h4>
         <svg
           className={style['title-stars']}
           width='30px'
@@ -79,11 +74,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
         >
           <path d='M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z' />
         </svg>
-        <span className={style['title-rating']}>{rating}</span>
+        <span className={style['title-rating']}>{dataItem.rating}</span>
       </div>
       <div className={style['selector']}>
         <ul className={style['list']}>
-          {types.map((item, index) => {
+          {dataItem.types.map((item: number, index: number) => {
             return (
               <li
                 key={index}
@@ -98,7 +93,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           })}
         </ul>
         <ul className={style['list']}>
-          {sizes.map((item, index) => {
+          {dataItem.sizes.map((item: number, index: number) => {
             return (
               <li
                 key={index}
@@ -114,7 +109,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </ul>
       </div>
       <div className={style['footer']}>
-        <div className={style['price']}>{price.toLocaleString()} ₽</div>
+        <div className={style['price']}>
+          {dataItem.price.toLocaleString()} ₽
+        </div>
         <Button
           handleClick={addAnItemToTheCart}
           nameBtn={'Добавить'}

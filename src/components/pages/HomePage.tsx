@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { useSelector } from 'react-redux';
 
 import {
@@ -21,15 +20,26 @@ import Pagination from '../folderPagination/Pagination';
 import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
 import InsteadProduct from '../folderInsteadProduct/InsteadProduct';
 
-function HomePage() {
+// type Products = {
+//   id: number;
+//   imageUrl: string;
+//   title: string;
+//   types: number[];
+//   sizes: number[];
+//   price: number;
+//   category: number;
+//   rating: number;
+// };
+
+const HomePage: React.FC = () => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (filteringId, sortId, searchValue) из состояния,
      с помощью селектора sortingAndFilteringSlice */
   const { filteringId, sortId, searchValue } = useSelector(
-    (state) => state.sortingAndFilteringSlice
+    (state: any) => state.sortingAndFilteringSlice
   );
   const { numberOfCardsPerPage, currentPage } = useSelector(
-    (state) => state.paginationSlice
+    (state: any) => state.paginationSlice
   );
 
   const [initialProductData, setInitialProductData] = React.useState([]);
@@ -147,9 +157,9 @@ function HomePage() {
                   // компонент, заглушки карточек товаров
                   return <ProductCardSkeleton key={index} />;
                 })
-              : productsCards.map((obj) => {
+              : productsCards.map((dataItem: any, index) => {
                   // компонент, карточки товаров
-                  return <ProductCard key={obj.id} {...obj} />;
+                  return <ProductCard key={dataItem.id} dataItem={dataItem} />;
                 })}
           </section>
           <section
@@ -171,6 +181,6 @@ function HomePage() {
       )}
     </>
   );
-}
+};
 
 export default HomePage;

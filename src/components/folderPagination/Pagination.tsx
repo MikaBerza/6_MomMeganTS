@@ -5,19 +5,19 @@ import style from './Pagination.module.css';
 import { getAnArrayWithPageNumbers } from '../../modules/modules';
 
 type PaginationProps = {
-  initialProductData: {
-    id: number;
-    imageUrl: string;
-    title: string;
-    types: number[];
-    sizes: number[];
-    price: number;
-    category: number;
-    rating: number;
-  };
+  id: number;
+  imageUrl: string;
+  title: string;
+  types: number[];
+  sizes: number[];
+  price: number;
+  category: number;
+  rating: number;
 };
 
-const Pagination: React.FC<PaginationProps> = ({ initialProductData }) => {
+const Pagination: React.FC<{ initialProductData: PaginationProps[] }> = ({
+  initialProductData,
+}) => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (numberOfCardsPerPage, currentPage) из состояния,
      с помощью селектора paginationSlice */
