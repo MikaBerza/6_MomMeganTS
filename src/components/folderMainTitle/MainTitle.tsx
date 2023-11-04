@@ -1,7 +1,12 @@
-import React from 'react';
 import style from './MainTitle.module.css';
 
-function MainTitle({ titleName, styleName }) {
+type MainTitleProps = {
+  titleName: string;
+  styleName?: string;
+};
+
+const MainTitle: React.FC<MainTitleProps> = ({ titleName, styleName }) => {
+  console.log(titleName, styleName);
   return (
     <section className={style['title']}>
       <h1
@@ -15,6 +20,6 @@ function MainTitle({ titleName, styleName }) {
       </h1>
     </section>
   );
-}
+};
 
 export default MainTitle;
