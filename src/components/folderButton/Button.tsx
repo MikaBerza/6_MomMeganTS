@@ -3,7 +3,7 @@ import React from 'react';
 import style from './Button.module.css';
 
 type ButtonProps = {
-  nameBtn: string;
+  nameBtn?: string;
   nameStyle: string[];
   handleClick?: () => void;
 };

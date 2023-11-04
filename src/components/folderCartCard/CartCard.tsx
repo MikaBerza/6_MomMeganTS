@@ -11,12 +11,21 @@ import style from './CartCard.module.css';
 import { listOfSeasonTitles } from '../../assets/listsWithNames';
 import Button from '../folderButton/Button';
 
-function CartCard({ id, imageUrl, title, types, sizes, price }) {
+type CartCardProps = {
+  id: number
+  imageUrl: string;
+  title: string;
+  types: number
+  sizes: number[];
+  price: number;
+};
+
+const CartCard: React.FC<CartCardProps> = ({ id, imageUrl, title, types, sizes, price }) => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (productCounter, priceCounter, cartData) из состояния,
      с помощью селектора cartOfProductsSlice */
   const { productCounter, priceCounter, cartData } = useSelector(
-    (state) => state.cartOfProductsSlice
+    (state: any) => state.cartOfProductsSlice
   );
   const dispatch = useDispatch();
 
@@ -70,6 +79,6 @@ function CartCard({ id, imageUrl, title, types, sizes, price }) {
       </div>
     </div>
   );
-}
+};
 
 export default CartCard;
