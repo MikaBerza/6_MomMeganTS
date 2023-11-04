@@ -1,25 +1,22 @@
 import React from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { setSearchValue } from '../../redux/slices/sortingAndFilteringSlice';
-
 import style from './Search.module.css';
-
 import debounce from 'lodash.debounce';
 
-function Search() {
+const Search: React.FC = () => {
   /* Используем хук useRef из библиотеки React для создания ссылки на DOM-элемент.
   Чтобы обратиться к DOM элементу через React */
-  const inputRef = React.useRef();
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const { searchValue } = useSelector(
-    (state) => state.sortingAndFilteringSlice
+    (state: any) => state.sortingAndFilteringSlice
   );
   const dispatch = useDispatch();
 
   // функция, по щелчку мыши очистить и добавить фокус
   const onClickClearAndAddFocus = () => {
     dispatch(setSearchValue(''));
-    inputRef.current.focus();
+    inputRef.current?.focus();
   };
 
   /* Воспользуемся хуком useCallback,
@@ -39,7 +36,7 @@ function Search() {
     []
   );
 
-  const onChangeInput = (event) => {
+  const onChangeInput = (event: any) => {
     updateWithDelay(event.target.value);
   };
 
@@ -73,6 +70,6 @@ function Search() {
       )}
     </section>
   );
-}
+};
 
 export default Search;
