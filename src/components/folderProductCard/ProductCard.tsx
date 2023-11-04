@@ -12,14 +12,30 @@ import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../folderButton/Button';
 
-function ProductCard({ imageUrl, title, types, sizes, price, rating }) {
+type ProductCardProps = {
+  imageUrl: string;
+  title: string;
+  types: number[];
+  sizes: number[];
+  price: number;
+  rating: number;
+};
+
+const ProductCard: React.FC<ProductCardProps> = ({
+  imageUrl,
+  title,
+  types,
+  sizes,
+  price,
+  rating,
+}) => {
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (productCounter, priceCounter, cartData) из состояния,
      с помощью селектора cartOfProductsSlice */
   const { productCounter, priceCounter, cartData } = useSelector(
-    (state) => state.cartOfProductsSlice
+    (state: any) => state.cartOfProductsSlice
   );
 
   const dispatch = useDispatch();
@@ -107,6 +123,6 @@ function ProductCard({ imageUrl, title, types, sizes, price, rating }) {
       </div>
     </div>
   );
-}
+};
 
 export default ProductCard;

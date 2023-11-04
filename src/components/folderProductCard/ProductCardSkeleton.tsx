@@ -2,7 +2,7 @@ import React from 'react';
 import ContentLoader from 'react-content-loader';
 import style from './ProductCard.module.css';
 
-const ProductCardSkeleton = () => (
+const ProductCardSkeleton: React.FC = () => (
   <ContentLoader
     className={style['product-card']}
     speed={1}
