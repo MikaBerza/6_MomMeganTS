@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './NotFoundBlock.module.css';
 
-function NotFoundBlock() {
+const NotFoundBlock: React.FC = () => {
   return (
     <>
       <span className={style['emoji']} role='img' aria-label='emoji'>
@@ -11,6 +11,6 @@ function NotFoundBlock() {
       <p className={style['description']}>К сожалению данные отсутствуют</p>
     </>
   );
-}
+};
 
 export default NotFoundBlock;
