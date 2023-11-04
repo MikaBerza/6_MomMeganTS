@@ -2,7 +2,7 @@ import React from 'react';
 import ContentLoader from 'react-content-loader';
 import style from './Pagination.module.css';
 
-function PaginationSkeleton() {
+const PaginationSkeleton: React.FC = () => {
   return (
     <nav className={style['page-navigation']}>
       <ContentLoader
@@ -17,6 +17,6 @@ function PaginationSkeleton() {
       </ContentLoader>
     </nav>
   );
-}
+};
 
 export default PaginationSkeleton;
