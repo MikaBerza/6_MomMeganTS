@@ -9,7 +9,7 @@ import peopleLeft2 from '../../assets/img/advertising/block_2_1/people_2_1_1.png
 import peopleRight1 from '../../assets/img/advertising/block_2_2/people_2_2.png';
 import peopleRight2 from '../../assets/img/advertising/block_2_2/people_2_2_1.png';
 
-function Advertising() {
+const Advertising: React.FC = () => {
   const [currentIndex1, setCurrentIndex1] = React.useState(0);
   const [currentIndex2, setCurrentIndex2] = React.useState(0);
   const [currentIndex3, setCurrentIndex3] = React.useState(0);
@@ -27,13 +27,13 @@ function Advertising() {
 
     // функция интервал задержки, она нужна для запуска других интервалов с задержкой
     const delayedInterval = (
-      arrayPaths,
-      timeoutDelayValue,
-      valueUpdateFunction
+      arrayPaths: string[],
+      timeoutDelayValue: number,
+      valueUpdateFunction: Function
     ) => {
       setTimeout(() => {
         setInterval(() => {
-          valueUpdateFunction((prevIndex) =>
+          valueUpdateFunction((prevIndex: number) =>
             prevIndex === arrayPaths.length - 1 ? 0 : prevIndex + 1
           );
         }, 4000);
@@ -46,6 +46,8 @@ function Advertising() {
 
     return () => {
       clearInterval(interval_1);
+      // ИСПРАВИТЬ ПОТОМ!!!!
+      // @ts-ignore
       clearTimeout(delayedInterval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -70,6 +72,6 @@ function Advertising() {
       />
     </div>
   );
-}
+};
 
 export default Advertising;
