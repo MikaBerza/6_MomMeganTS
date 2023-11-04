@@ -1,15 +1,23 @@
 import React from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { setSortId } from '../../redux/slices/sortingAndFilteringSlice';
-
 import style from './Sort.module.css';
 import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 import { getSortedData } from '../../modules/modules';
 
-function Sort({ valueId, updateProductData, setUpdateProductData }) {
+type SortProps = {
+  valueId: any;
+  updateProductData: any;
+  setUpdateProductData: any;
+};
+
+const Sort: React.FC<SortProps> = ({
+  valueId,
+  updateProductData,
+  setUpdateProductData,
+}) => {
   const { searchValue } = useSelector(
-    (state) => state.sortingAndFilteringSlice
+    (state: any) => state.sortingAndFilteringSlice
   );
   const dispatch = useDispatch();
 
@@ -17,9 +25,9 @@ function Sort({ valueId, updateProductData, setUpdateProductData }) {
   const [open, setOpen] = React.useState(false);
   /* Используем хук useRef из библиотеки React для создания ссылки на DOM-элемент.
   Чтобы обратиться к DOM элементу через React */
-  const sortRef = React.useRef();
+  const sortRef = React.useRef<HTMLDivElement>(null);
 
-  const onClickSorting = (index) => {
+  const onClickSorting = (index: number) => {
     dispatch(setSortId(index));
     const newProductsCardsFragment = getSortedData(updateProductData, index);
     setUpdateProductData(newProductsCardsFragment);
@@ -31,7 +39,7 @@ function Sort({ valueId, updateProductData, setUpdateProductData }) {
     // получаем элемент страницы
     const elementBody = document.querySelector('body');
     // функция, закрыть по клику вне списка сортировки
-    const closeOnClickOutsideTheListSort = (event) => {
+    const closeOnClickOutsideTheListSort = (event: any) => {
       /* composedPath() - возвращает массив элементов, 
       начиная с целевого элемента события и до корневого элемента документа */
       const arrElem = event.composedPath();
@@ -40,14 +48,20 @@ function Sort({ valueId, updateProductData, setUpdateProductData }) {
         setOpen(false);
       }
     };
-    // навешиваем обработчик события
-    elementBody.addEventListener('click', closeOnClickOutsideTheListSort);
 
-    /*____Код, выполняемый перед демонтажем компонента____*/
-    return () => {
-      // удаляем обработчик события
-      elementBody.removeEventListener('click', closeOnClickOutsideTheListSort);
-    };
+    if (elementBody !== null) {
+      // навешиваем обработчик события
+      elementBody.addEventListener('click', closeOnClickOutsideTheListSort);
+
+      /*____Код, выполняемый перед демонтажем компонента____*/
+      return () => {
+        // удаляем обработчик события
+        elementBody.removeEventListener(
+          'click',
+          closeOnClickOutsideTheListSort
+        );
+      };
+    }
   }, []);
 
   return (
@@ -107,6 +121,6 @@ function Sort({ valueId, updateProductData, setUpdateProductData }) {
       )}
     </div>
   );
-}
+};
 
 export default Sort;
