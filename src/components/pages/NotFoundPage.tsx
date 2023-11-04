@@ -1,12 +1,12 @@
 import React from 'react';
 import NotFoundBlock from '../folderNotFound/NotFoundBlock';
 
-function NotFoundPage() {
+const NotFoundPage: React.FC = () => {
   return (
     <section className={'not-found'}>
       <NotFoundBlock />
     </section>
   );
-}
+};
 
 export default NotFoundPage;
