@@ -1,7 +1,6 @@
-import React from 'react';
 import style from '../folderFooter/footer.module.css';
 
-function Footer() {
+const Footer: React.FC = () => {
   return (
     <footer className={style['wrapper']}>
       <p className={style['text']}>© 2023 Copyright:</p>
@@ -25,6 +24,6 @@ function Footer() {
       </a>
     </footer>
   );
-}
+};
 
 export default Footer;
