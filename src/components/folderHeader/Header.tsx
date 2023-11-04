@@ -1,17 +1,14 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { useSelector } from 'react-redux';
-
 import style from './Header.module.css';
 import mLogo from '../../assets/img/M-logo.png';
 
-function Header() {
+const Header: React.FC = () => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (productCounter) из состояния,
      с помощью селектора cartOfProductsSlice */
   const { productCounter, priceCounter } = useSelector(
-    (state) => state.cartOfProductsSlice
+    (state: any) => state.cartOfProductsSlice
   );
 
   return (
@@ -70,6 +67,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;
