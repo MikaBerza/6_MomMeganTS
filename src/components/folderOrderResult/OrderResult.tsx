@@ -2,12 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import style from './OrderResult.module.css';
 
-function OrderResult() {
+const OrderResult: React.FC = () => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (productCounter, priceCounter, cartData) из состояния,
      с помощью селектора cartOfProductsSlice */
   const { productCounter, priceCounter } = useSelector(
-    (state) => state.cartOfProductsSlice
+    (state: any) => state.cartOfProductsSlice
   );
 
   return (
@@ -22,6 +22,6 @@ function OrderResult() {
       </p>
     </div>
   );
-}
+};
 
 export default OrderResult;
