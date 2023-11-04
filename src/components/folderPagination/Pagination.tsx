@@ -1,20 +1,31 @@
 import React from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentPage } from '../../redux/slices/paginationSlice';
-
 import style from './Pagination.module.css';
 import { getAnArrayWithPageNumbers } from '../../modules/modules';
 
-function Pagination({ initialProductData }) {
+type PaginationProps = {
+  initialProductData: {
+    id: number;
+    imageUrl: string;
+    title: string;
+    types: number[];
+    sizes: number[];
+    price: number;
+    category: number;
+    rating: number;
+  };
+};
+
+const Pagination: React.FC<PaginationProps> = ({ initialProductData }) => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (numberOfCardsPerPage, currentPage) из состояния,
      с помощью селектора paginationSlice */
   const { numberOfCardsPerPage, currentPage } = useSelector(
-    (state) => state.paginationSlice
+    (state: any) => state.paginationSlice
   );
   const dispatch = useDispatch();
-  const onClickGoToPage = (index) => {
+  const onClickGoToPage = (index: number) => {
     dispatch(setCurrentPage(index));
   };
 
@@ -48,6 +59,6 @@ function Pagination({ initialProductData }) {
       </nav>
     </>
   );
-}
+};
 
 export default Pagination;

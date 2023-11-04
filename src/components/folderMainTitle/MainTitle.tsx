@@ -6,7 +6,6 @@ type MainTitleProps = {
 };
 
 const MainTitle: React.FC<MainTitleProps> = ({ titleName, styleName }) => {
-  console.log(titleName, styleName);
   return (
     <section className={style['title']}>
       <h1
