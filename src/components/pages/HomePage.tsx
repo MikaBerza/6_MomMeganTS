@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -20,16 +20,16 @@ import Pagination from '../folderPagination/Pagination';
 import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
 import InsteadProduct from '../folderInsteadProduct/InsteadProduct';
 
-// type Products = {
-//   id: number;
-//   imageUrl: string;
-//   title: string;
-//   types: number[];
-//   sizes: number[];
-//   price: number;
-//   category: number;
-//   rating: number;
-// };
+type ProductsType = {
+  id: number;
+  imageUrl: string;
+  title: string;
+  types: number[];
+  sizes: number[];
+  price: number;
+  category: number;
+  rating: number;
+};
 
 const HomePage: React.FC = () => {
   /* используем хук useSelector из библиотеки Redux 
@@ -43,8 +43,10 @@ const HomePage: React.FC = () => {
   );
 
   const [initialProductData, setInitialProductData] = React.useState([]);
-  const [updateProductData, setUpdateProductData] = React.useState([]);
-  const [productsCards, setProductsCards] = React.useState([]);
+  const [updateProductData, setUpdateProductData] = useState<ProductsType[]>(
+    []
+  );
+  const [productsCards, setProductsCards] = React.useState<ProductsType[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [errorOccurred, setErrorOccurred] = React.useState(false);
   // создадим массив для отображения скелетона (он будет заполнен undefined)
@@ -90,13 +92,21 @@ const HomePage: React.FC = () => {
 
   React.useEffect(() => {
     // получим отсортированный и отфильтрованный массив данных
-    const productsCardsFragment = getArrayFragment(
-      getSortedAndFilteredData(initialProductData, sortId, filteringId),
-      currentPage,
-      numberOfCardsPerPage
+    const productData = getSortedAndFilteredData(
+      initialProductData,
+      sortId,
+      filteringId
     );
-    // запишем в переменную состояния
-    setUpdateProductData(productsCardsFragment);
+    if (typeof productData !== 'string') {
+      const productsCardsFragment = getArrayFragment(
+        productData,
+        currentPage,
+        numberOfCardsPerPage
+      );
+      // запишем в переменную состояния
+      setUpdateProductData(productsCardsFragment);
+    }
+
     // установим не все зависимости
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialProductData, numberOfCardsPerPage, currentPage, filteringId]);
@@ -109,20 +119,29 @@ const HomePage: React.FC = () => {
     if (searchValue.trim().length === 0 && filteringId === 0) {
       setProductsCards(updateProductData);
     } else if (searchValue.trim().length === 0 && filteringId !== 0) {
-      setProductsCards(
-        getSortedAndFilteredData(initialProductData, sortId, filteringId)
+      const productData = getSortedAndFilteredData(
+        initialProductData,
+        sortId,
+        filteringId
       );
+      if (typeof productData !== 'string') {
+        setProductsCards(productData);
+      }
     } else if (searchValue.trim().length !== 0 && filteringId === 0) {
       setProductsCards(
         getFilteredDataByEnteredValues(initialProductData, searchValue)
       );
     } else if (searchValue.trim().length !== 0 && filteringId !== 0) {
-      setProductsCards(
-        getFilteredDataByEnteredValues(
-          getSortedAndFilteredData(initialProductData, sortId, filteringId),
-          searchValue
-        )
+      const productData = getSortedAndFilteredData(
+        initialProductData,
+        sortId,
+        filteringId
       );
+      if (typeof productData !== 'string') {
+        setProductsCards(
+          getFilteredDataByEnteredValues(productData, searchValue)
+        );
+      }
     }
     // установим не все зависимости
     // eslint-disable-next-line react-hooks/exhaustive-deps

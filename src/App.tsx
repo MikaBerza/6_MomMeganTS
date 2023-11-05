@@ -29,6 +29,17 @@ import {
 
 import './App.css';
 
+type LocalStorageType = {
+  dateValue: Date;
+  searchValue: string;
+  filteringValue: number;
+  sortValue: number;
+  currentPageValue: number;
+  productCounterValue: number;
+  priceCounterValue: number;
+  cartDataValue: [];
+};
+
 function App() {
   //____Логика сохранения и получение данных при перезагрузке страницы
   const dispatch = useDispatch();
@@ -48,9 +59,9 @@ function App() {
 
   React.useEffect(() => {
     // После перезагрузки страницы установим данные из localStorage
-    if (checkLocalStorageForNull() !== null) {
-      // запишем возвращенный объект с данными из localStorage в константу
-      const dataset = returnAnObjectWithDataFromLocalStorage();
+    // запишем возвращенный объект с данными из localStorage в константу
+    const dataset = returnAnObjectWithDataFromLocalStorage();
+    if (checkLocalStorageForNull() !== null && dataset !== null) {
       // установим значения из localStorage
       dispatch(setFilteringId(dataset.filteringValue));
       dispatch(setSortId(dataset.sortValue));
@@ -66,7 +77,7 @@ function App() {
   React.useEffect(() => {
     if (checkLocalStorageForNull() === null) {
       // формируем объект с данными сеанса
-      const sessionData = {
+      const sessionData: LocalStorageType = {
         dateValue: new Date(),
         searchValue: searchValue,
         filteringValue: filteringId,
