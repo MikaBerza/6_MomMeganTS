@@ -19,12 +19,14 @@ const Advertising: React.FC = () => {
   const arrayPathsPeopleRight = [peopleRight1, peopleRight2];
 
   React.useEffect(() => {
-    const interval_1 = setInterval(() => {
-      setCurrentIndex1((prevIndex) =>
+    const interval_1: NodeJS.Timeout = setInterval(() => {
+      setCurrentIndex1((prevIndex: number) =>
         prevIndex === arrayPathsToImgMegaSale.length - 1 ? 0 : prevIndex + 1
       );
     }, 4000);
 
+    // Определение переменной для хранения идентификатора таймера
+    let timeout_1: NodeJS.Timeout | null = null;
     // функция интервал задержки, она нужна для запуска других интервалов с задержкой
     const delayedInterval = (
       arrayPaths: string[],
@@ -46,9 +48,9 @@ const Advertising: React.FC = () => {
 
     return () => {
       clearInterval(interval_1);
-      // ИСПРАВИТЬ ПОТОМ!!!!
-      // @ts-ignore
-      clearTimeout(delayedInterval);
+      if (timeout_1 !== null) {
+        clearTimeout(timeout_1);
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
