@@ -8,7 +8,7 @@ import {
 } from '../../redux/slices/cartOfProductsSlice';
 
 import style from './ProductCard.module.css';
-import { listOfSeasonTitles } from '../../assets/listsWithNames.js';
+import { listOfSeasonTitles } from '../../assets/listsWithNames';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../folderButton/Button';
 

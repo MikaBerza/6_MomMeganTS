@@ -1,12 +1,12 @@
 // список названий элементов сортировки
-export const listOfNamesOfSortingElements = [
+export const listOfNamesOfSortingElements: string[] = [
   'популярности',
   'убыванию цены',
   'возрастанию цены',
   'алфавиту',
 ];
 // список названий элементов категорий
-export const listOfFilteringItemNames = [
+export const listOfFilteringItemNames: string[] = [
   'Все',
   'Мужская обувь',
   'Женская обувь',
@@ -15,4 +15,4 @@ export const listOfFilteringItemNames = [
   'Перчатки',
 ];
 // список названий сезонов
-export const listOfSeasonTitles = ['летнии', 'осеннии', 'зимнии'];
+export const listOfSeasonTitles: string[] = ['летнии', 'осеннии', 'зимнии'];
