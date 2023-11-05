@@ -3,10 +3,7 @@ import { setFilteringId } from '../../redux/slices/sortingAndFilteringSlice';
 
 import style from './Filtering.module.css';
 import { listOfFilteringItemNames } from '../../assets/listsWithNames';
-
-type FilteringProps = {
-  valueId: number;
-};
+import { FilteringProps } from '../../@types/customType';
 
 const Filtering: React.FC<FilteringProps> = ({ valueId }) => {
   const dispatch = useDispatch();

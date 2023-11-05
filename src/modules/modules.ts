@@ -3,27 +3,7 @@ import {
   listOfFilteringItemNames,
 } from '../assets/listsWithNames';
 
-type LocalStorageType = {
-  dateValue: Date;
-  searchValue: string;
-  filteringValue: number;
-  sortValue: number;
-  currentPageValue: number;
-  productCounterValue: number;
-  priceCounterValue: number;
-  cartDataValue: [];
-};
-
-type ProductsType = {
-  id: number;
-  imageUrl: string;
-  title: string;
-  types: number[];
-  sizes: number[];
-  price: number;
-  category: number;
-  rating: number;
-};
+import {LocalStorageType, ProductType} from '../@types/customType';
 
 /* Бок с функциями для сортировки и фильтрации_________________________________________________*/
 // функция, преобразовать массив элементов в массив с индексами
@@ -38,9 +18,9 @@ const convertAnArrayOfElementsToAnArrayWithIndexes = (
 
 // функция, получить отсортированный массив по (алфавиту(title), цене убыванию/возрастанию(price), популярности(rating))
 export const getSortedData = (
-  productData: ProductsType[],
+  productData: ProductType[],
   sortingNumber: number
-): ProductsType[] => {
+): ProductType[] => {
   // Создаем копию исходного массива
   const copyDataArray = [...productData];
 
@@ -53,23 +33,23 @@ export const getSortedData = (
 
   // Выбираем метод сортировки в зависимости от sortingNumber, а пока
   // объявим переменную и присвоили ей значение null
-  let sortFunction: ((a: ProductsType, b: ProductsType) => number) | undefined;
+  let sortFunction: ((a: ProductType, b: ProductType) => number) | undefined;
   if (sortingNumber === alphabet) {
     // Для правильной сортировки слов по русскому алфавиту используем метод localeCompare()
     // с использованием правил локали для англ.яз "en"
-    sortFunction = (a: ProductsType, b: ProductsType) =>
+    sortFunction = (a: ProductType, b: ProductType) =>
       a['title'].localeCompare(b['title'], 'en');
   } else if (sortingNumber === priceAscending) {
     // Для сортировки по числовым свойствам (price)
-    sortFunction = (a: ProductsType, b: ProductsType) =>
+    sortFunction = (a: ProductType, b: ProductType) =>
       a['price'] - b['price'];
   } else if (sortingNumber === priceDescending) {
     // Для сортировки по числовым свойствам (price)
-    sortFunction = (a: ProductsType, b: ProductsType) =>
+    sortFunction = (a: ProductType, b: ProductType) =>
       b['price'] - a['price'];
   } else if (sortingNumber === rating) {
     // Для сортировки по числовым свойствам (rating)
-    sortFunction = (a: ProductsType, b: ProductsType) =>
+    sortFunction = (a: ProductType, b: ProductType) =>
       b['rating'] - a['rating'];
   }
   // Сортируем и возвращаем отсортированный массив
@@ -79,19 +59,19 @@ export const getSortedData = (
 
 // функция, получить отфильтрованный массив по (категориям(category))
 export const getFilteredData = (
-  productData: ProductsType[],
+  productData: ProductType[],
   categoryNumber: number
-): ProductsType[] => {
+): ProductType[] => {
   // Отфильтруем массив по категориям (categoryNumber) и вернем его
   return productData.filter((item) => item.category === categoryNumber);
 };
 
 // функция, получить отсортированный и отфильтрованный массив
 export const getSortedAndFilteredData = (
-  productData: ProductsType[],
+  productData: ProductType[],
   sortingNumber: number,
   categoryNumber: number
-): ProductsType[] | string => {
+): ProductType[] | string => {
   // допустимые свойства сортировки запишем в константу
   const validSortProperties = convertAnArrayOfElementsToAnArrayWithIndexes(
     listOfNamesOfSortingElements
@@ -121,9 +101,9 @@ export const getSortedAndFilteredData = (
 
 // функция, получить отфильтрованные данные по введенным значениям в input
 export const getFilteredDataByEnteredValues = (
-  arrData: ProductsType[],
+  arrData: ProductType[],
   inputValue: string
-): ProductsType[] => {
+): ProductType[] => {
   const newArr = arrData.filter((obj) => {
     if (obj.title.toUpperCase().includes(inputValue.toUpperCase())) {
       return true;
@@ -137,7 +117,7 @@ export const getFilteredDataByEnteredValues = (
 
 // функция, получить массив с номерами страниц
 export const getAnArrayWithPageNumbers = (
-  arrData: ProductsType[],
+  arrData: ProductType[],
   numberOfProducts: number
 ): number[] => {
   let newArr = [];
@@ -151,10 +131,10 @@ export const getAnArrayWithPageNumbers = (
 
 // функция, получить фрагмент массива
 export const getArrayFragment = (
-  arrData: ProductsType[],
+  arrData: ProductType[],
   currentIndex: number,
   numberOfElementsPerPage: number
-): ProductsType[] => {
+): ProductType[] => {
   const begin = currentIndex * numberOfElementsPerPage;
   const end = begin + numberOfElementsPerPage;
   return arrData.slice(begin, end);

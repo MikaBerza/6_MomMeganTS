@@ -11,17 +11,9 @@ import style from './ProductCard.module.css';
 import { listOfSeasonTitles } from '../../assets/listsWithNames';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../folderButton/Button';
+import { ProductType } from '../../@types/customType';
 
-type ProductCardProps = {
-  imageUrl: string;
-  title: string;
-  types: number[];
-  sizes: number[];
-  price: number;
-  rating: number;
-};
-
-const ProductCard: React.FC<{ dataItem: ProductCardProps }> = ({
+const ProductCard: React.FC<{ dataItem: ProductType }> = ({
   dataItem,
 }) => {
   const [activeType, setActiveType] = React.useState(0);
@@ -42,7 +34,7 @@ const ProductCard: React.FC<{ dataItem: ProductCardProps }> = ({
       id: uuidv4(),
       imageUrl: dataItem.imageUrl,
       title: dataItem.title,
-      types: dataItem.types[activeType],
+      type: dataItem.types[activeType],
       sizes: dataItem.sizes[activeSize],
       price: dataItem.price,
     };

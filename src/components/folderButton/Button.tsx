@@ -1,13 +1,8 @@
 import React from 'react';
 import style from './Button.module.css';
+import { ButtonPropsType } from '../../@types/customType';
 
-type ButtonProps = {
-  nameBtn?: string;
-  nameStyle: string[];
-  handleClick?: () => void;
-};
-
-const Button: React.FC<ButtonProps> = ({ nameBtn, nameStyle, handleClick }) => {
+const Button: React.FC<ButtonPropsType> = ({ nameBtn, nameStyle, handleClick }) => {
   return (
     <button
       className={`${style['button']} ${style[`${nameStyle[0]}`]}`}

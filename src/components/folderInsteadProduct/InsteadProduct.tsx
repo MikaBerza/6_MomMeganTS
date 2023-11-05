@@ -1,8 +1,5 @@
+import { InsteadProductProps } from '../../@types/customType';
 import style from './insteadProduct.module.css';
-
-type InsteadProductProps = {
-  img: string;
-};
 
 const InsteadProduct: React.FC<InsteadProductProps> = ({ img }) => {
   return (

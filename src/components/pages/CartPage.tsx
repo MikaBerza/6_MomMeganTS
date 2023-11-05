@@ -6,15 +6,8 @@ import CartCard from '../folderCartCard/CartCard';
 import OrderResult from '../folderOrderResult/OrderResult';
 import ButtonGroup from '../folderButtonGroup/ButtonGroup';
 import InsteadProduct from '../folderInsteadProduct/InsteadProduct';
+import { ProductCartType } from '../../@types/customType';
 
-type CartPageProps = {
-  id: number
-  imageUrl: string;
-  title: string;
-  types: number
-  sizes: number[];
-  price: number;
-};
 const CartPage: React.FC = () => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (productCounter, priceCounter, cartData) из состояния,
@@ -26,7 +19,7 @@ const CartPage: React.FC = () => {
   return productCounter > 0 ? (
     <>
       <MainTitle titleName='Корзина' />
-      {cartData.map((obj: CartPageProps) => {
+      {cartData.map((obj: ProductCartType) => {
         return <CartCard key={obj.id} {...obj} />;
       })}
       <OrderResult />

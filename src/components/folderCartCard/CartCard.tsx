@@ -11,16 +11,9 @@ import style from './CartCard.module.css';
 import { listOfSeasonTitles } from '../../assets/listsWithNames';
 import Button from '../folderButton/Button';
 
-type CartCardProps = {
-  id: number
-  imageUrl: string;
-  title: string;
-  types: number
-  sizes: number[];
-  price: number;
-};
+import { ProductCartType } from '../../@types/customType';
 
-const CartCard: React.FC<CartCardProps> = ({ id, imageUrl, title, types, sizes, price }) => {
+const CartCard: React.FC<ProductCartType> = ({ id, imageUrl, title, type, sizes, price }) => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (productCounter, priceCounter, cartData) из состояния,
      с помощью селектора cartOfProductsSlice */
@@ -60,7 +53,7 @@ const CartCard: React.FC<CartCardProps> = ({ id, imageUrl, title, types, sizes, 
         <div className={style['info']}>
           <h3 className={style['title']}>{title}</h3>
           <p className={style['description']}>
-            {listOfSeasonTitles[types]}, {sizes}
+            {listOfSeasonTitles[type]}, {sizes}
           </p>
         </div>
       </div>

@@ -19,17 +19,7 @@ import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
 import Pagination from '../folderPagination/Pagination';
 import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
 import InsteadProduct from '../folderInsteadProduct/InsteadProduct';
-
-type ProductsType = {
-  id: number;
-  imageUrl: string;
-  title: string;
-  types: number[];
-  sizes: number[];
-  price: number;
-  category: number;
-  rating: number;
-};
+import { ProductType } from '../../@types/customType';
 
 const HomePage: React.FC = () => {
   /* используем хук useSelector из библиотеки Redux 
@@ -43,10 +33,10 @@ const HomePage: React.FC = () => {
   );
 
   const [initialProductData, setInitialProductData] = React.useState([]);
-  const [updateProductData, setUpdateProductData] = useState<ProductsType[]>(
+  const [updateProductData, setUpdateProductData] = useState<ProductType[]>(
     []
   );
-  const [productsCards, setProductsCards] = React.useState<ProductsType[]>([]);
+  const [productsCards, setProductsCards] = React.useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [errorOccurred, setErrorOccurred] = React.useState(false);
   // создадим массив для отображения скелетона (он будет заполнен undefined)

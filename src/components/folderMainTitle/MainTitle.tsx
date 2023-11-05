@@ -1,9 +1,5 @@
+import { MainTitleProps } from '../../@types/customType';
 import style from './MainTitle.module.css';
-
-type MainTitleProps = {
-  titleName: string;
-  styleName?: string;
-};
 
 const MainTitle: React.FC<MainTitleProps> = ({ titleName, styleName }) => {
   return (

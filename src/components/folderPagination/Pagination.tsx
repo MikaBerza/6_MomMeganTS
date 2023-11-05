@@ -3,19 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentPage } from '../../redux/slices/paginationSlice';
 import style from './Pagination.module.css';
 import { getAnArrayWithPageNumbers } from '../../modules/modules';
+import { ProductType } from '../../@types/customType';
 
-type PaginationProps = {
-  id: number;
-  imageUrl: string;
-  title: string;
-  types: number[];
-  sizes: number[];
-  price: number;
-  category: number;
-  rating: number;
-};
-
-const Pagination: React.FC<{ initialProductData: PaginationProps[] }> = ({
+const Pagination: React.FC<{ initialProductData: ProductType[] }> = ({
   initialProductData,
 }) => {
   /* используем хук useSelector из библиотеки Redux 

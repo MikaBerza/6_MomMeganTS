@@ -2,12 +2,9 @@ import { Link } from 'react-router-dom';
 
 import style from './ButtonGroup.module.css';
 import Button from '../folderButton/Button';
+import { ButtonGroupPropsType } from '../../@types/customType';
 
-type ButtonGroupProps = {
-  styleName: string;
-};
-
-const ButtonGroup: React.FC<ButtonGroupProps> = ({ styleName }) => {
+const ButtonGroup: React.FC<ButtonGroupPropsType> = ({ styleName }) => {
   if (styleName === undefined) {
     styleName = '';
   }

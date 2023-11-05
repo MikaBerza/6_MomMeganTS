@@ -4,12 +4,7 @@ import { setSortId } from '../../redux/slices/sortingAndFilteringSlice';
 import style from './Sort.module.css';
 import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 import { getSortedData } from '../../modules/modules';
-
-type SortProps = {
-  valueId: any;
-  updateProductData: any;
-  setUpdateProductData: any;
-};
+import { SortProps } from '../../@types/customType';
 
 const Sort: React.FC<SortProps> = ({
   valueId,
