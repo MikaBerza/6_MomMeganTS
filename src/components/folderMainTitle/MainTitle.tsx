@@ -1,7 +1,7 @@
-import { MainTitleProps } from '../../@types/customType';
+import { MainTitlePropsType } from '../../@types/customType';
 import style from './MainTitle.module.css';
 
-const MainTitle: React.FC<MainTitleProps> = ({ titleName, styleName }) => {
+const MainTitle: React.FC<MainTitlePropsType> = ({ titleName, styleName }) => {
   return (
     <section className={style['title']}>
       <h1

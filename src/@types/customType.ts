@@ -39,20 +39,20 @@ export type ButtonGroupPropsType = {
   styleName: string;
 };
 
-export type FilteringProps = {
+export type FilteringPropsType = {
   valueId: number;
 };
 
-export type InsteadProductProps = {
+export type InsteadProductPropsType = {
   img: string;
 };
 
-export type MainTitleProps = {
+export type MainTitlePropsType = {
   titleName: string;
   styleName?: string;
 };
 
-export type SortProps = {
+export type SortPropsType  = {
   valueId: any;
   updateProductData: any;
   setUpdateProductData: any;

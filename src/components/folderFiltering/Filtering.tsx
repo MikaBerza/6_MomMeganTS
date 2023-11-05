@@ -3,9 +3,9 @@ import { setFilteringId } from '../../redux/slices/sortingAndFilteringSlice';
 
 import style from './Filtering.module.css';
 import { listOfFilteringItemNames } from '../../assets/listsWithNames';
-import { FilteringProps } from '../../@types/customType';
+import { FilteringPropsType } from '../../@types/customType';
 
-const Filtering: React.FC<FilteringProps> = ({ valueId }) => {
+const Filtering: React.FC<FilteringPropsType> = ({ valueId }) => {
   const dispatch = useDispatch();
 
   const onClickFiltering = (index: number) => {
