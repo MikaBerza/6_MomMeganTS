@@ -4,21 +4,21 @@
   justify-content: space-between;
 }
 
-.label {
+.container-logo {
   padding-top: 20px;
   padding-right: 7px;
 }
 
-.label__images {
+.images-logo {
   display: flex;
 }
 
-.label__images-item {
+.images-item {
   width: 60px;
   margin-right: 10px
 }
 
-.label__title {
+.title {
   font-size: 24px;
   font-weight: 800;
   text-align: initial;
@@ -26,17 +26,17 @@
   color: var(--dark-gray4);
 }
 
-.label__subtitle {
+.subtitle {
   text-align: initial;
   color: var(--gray3);
 }
 
-.basket-button {
+.container-cart {
   max-width: 200px;
   padding-top: 20px;
 }
 
-.basket-button__item {
+.link-cart {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,19 +49,19 @@
   cursor: pointer;
 }
 
-.basket-button__price,
-.basket-button__counter {
+.price,
+.counter {
   font-size: 16px;
   font-weight: 600;
 }
 
-.basket-button__price::after {
+.price::after {
   position: relative;
   padding-left: 5px;
   content: '₽';
 }
 
-.basket-button__delimiter {
+.delimiter {
   width: 1px;
   height: 25px;
   margin-right: 14px;
@@ -69,37 +69,37 @@
   background-color: var(--dark-gray1);
 }
 
-.basket-button__images {
+.images-cart {
   margin-right: 8px;
   margin-bottom: 1px
 }
 
-.basket-button__item,
-.basket-button__price,
-.basket-button__delimiter,
-.basket-button__images,
-.basket-button__counter {
+.link-cart,
+.price,
+.delimiter,
+.images-cart,
+.counter {
   -webkit-transition: all .15s ease-in-out;
   transition: all .15s ease-in-out
 }
 
-.basket-button__item:hover {
+.link-cart:hover {
   background-color: var(--light-gray2);
 }
 
-.basket-button__item:active {
+.link-cart:active {
   background-color: var(--dark-gray2);
   -webkit-transform: translateY(1px);
   transform: translateY(1px)
 }
 
-.basket-button__item:active>.basket-button__price,
-.basket-button__item:active>.basket-button__images,
-.basket-button__item:active>.basket-button__counter {
+.link-cart:active>.price,
+.link-cart:active>.images-cart,
+.link-cart:active>.counter {
   color: var(--light-gray3);
   fill: var(--light-gray3);
 }
 
-.basket-button__item:active>.basket-button__delimiter {
+.link-cart:active>.delimiter {
   background-color: var(--light-gray3);
 }

@@ -15,33 +15,26 @@ const Header: React.FC<HeaderPropsType> = ({ title, subtitle }) => {
 
   return (
     <header className={style['wrapper']}>
-      <div className={style['label']}>
-        <Link className={style['label__link']} to='/6_MomMeganTS'>
-          <div className={style['label__images']}>
-            <img
-              className={style['label__images-item']}
-              src={mLogo}
-              alt='logo'
-            />
+      <div className={style['container-logo']}>
+        <Link className={style['link-logo']} to='/6_MomMeganTS'>
+          <div className={style['images-logo']}>
+            <img className={style['images-item']} src={mLogo} alt='logo' />
             <div>
-              <h1 className={style['label__title']}>{title}</h1>
-              <p className={style['label__subtitle']}>{subtitle}</p>
+              <h1 className={style['title']}>{title}</h1>
+              <p className={style['subtitle']}>{subtitle}</p>
             </div>
           </div>
         </Link>
       </div>
 
-      <div className={style['basket-button']}>
-        <Link
-          to='/6_MomMeganTS/CartPage'
-          className={style['basket-button__item']}
-        >
-          <span className={style['basket-button__price']}>
+      <div className={style['container-cart']}>
+        <Link to='/6_MomMeganTS/CartPage' className={style['link-cart']}>
+          <span className={style['price']}>
             {priceCounter.toLocaleString()}
           </span>
-          <div className={style['basket-button__delimiter']}></div>
+          <div className={style['delimiter']}></div>
           <svg
-            className={style['basket-button__images']}
+            className={style['images-cart']}
             width='18px'
             height='18px'
             viewBox='0 0 24 24'
@@ -60,7 +53,7 @@ const Header: React.FC<HeaderPropsType> = ({ title, subtitle }) => {
               <path d='M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z' />
             </g>
           </svg>
-          <span className={style['basket-button__counter']}>
+          <span className={style['counter']}>
             {productCounter.toLocaleString()}
           </span>
         </Link>
