@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { HeaderPropsType } from '../../@types/customType';
 import style from './Header.module.css';
 import mLogo from '../../assets/img/M-logo.png';
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderPropsType> = ({ title, subtitle }) => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (productCounter) из состояния,
      с помощью селектора cartOfProductsSlice */
@@ -23,10 +24,8 @@ const Header: React.FC = () => {
               alt='logo'
             />
             <div>
-              <h1 className={style['label__title']}>Megan</h1>
-              <p className={style['label__subtitle']}>
-                Одежда, которая вдохновляет
-              </p>
+              <h1 className={style['label__title']}>{title}</h1>
+              <p className={style['label__subtitle']}>{subtitle}</p>
             </div>
           </div>
         </Link>

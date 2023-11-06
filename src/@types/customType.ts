@@ -29,6 +29,11 @@ export type ProductCartType = {
   price: number;
 };
 
+export type HeaderPropsType = {
+  title: string;
+  subtitle: string;
+};
+
 export type ButtonPropsType = {
   nameBtn?: string;
   nameStyle: string[];

@@ -116,7 +116,7 @@ const App: React.FC = () => {
   return (
     <>
       <div className='wrapper'>
-        <Header />
+        <Header title={'Megan'} subtitle={'Одежда, которая вдохновляет'} />
         <Routes>
           <Route path='/6_MomMeganTS' element={<HomePage />} />
           <Route path='/6_MomMeganTS/CartPage' element={<CartPage />} />
