@@ -6,7 +6,7 @@ export type LocalStorageType = {
   currentPageValue: number;
   productCounterValue: number;
   priceCounterValue: number;
-  cartDataValue: ProductCartType[] | [];
+  cartDataValue: ProductCartType[];
 };
 
 export type ProductType = {
