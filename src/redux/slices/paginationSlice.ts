@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { PaginationInitialStateType } from '../../@types/customType';
 
 // первое состояние
@@ -11,11 +11,11 @@ export const paginationSlice = createSlice({
   name: 'pagination',
   initialState,
   reducers: {
-    setNumberOfCardsPerPage(state, action) {
+    setNumberOfCardsPerPage(state, action: PayloadAction<number>) {
       state.numberOfCardsPerPage = action.payload;
     },
 
-    setCurrentPage(state, action) {
+    setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
   },

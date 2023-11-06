@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { SortingAndFilteringInitialStateType } from '../../@types/customType';
 
 // первое состояние
@@ -12,14 +12,14 @@ export const sortingAndFilteringSlice = createSlice({
   name: 'sortingAndFiltering',
   initialState,
   reducers: {
-    setFilteringId(state, action) {
+    setFilteringId(state, action: PayloadAction<number>) {
       state.filteringId = action.payload;
     },
 
-    setSortId(state, action) {
+    setSortId(state, action: PayloadAction<number>) {
       state.sortId = action.payload;
     },
-    setSearchValue(state, action) {
+    setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
   },

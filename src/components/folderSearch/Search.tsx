@@ -37,7 +37,7 @@ const Search: React.FC = () => {
     []
   );
 
-  const onChangeInput = (event: any) => {
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateWithDelay(event.target.value);
   };
 

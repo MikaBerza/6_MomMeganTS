@@ -1,6 +1,7 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from './redux/slices/paginationSlice';
 import {
   setFilteringId,
@@ -12,8 +13,7 @@ import {
   setPriceCounter,
   setCartData,
 } from './redux/slices/cartOfProductsSlice';
-
-import { Routes, Route } from 'react-router-dom';
+import { RootState } from './redux/store';
 
 import Header from './components/folderHeader/Header';
 import HomePage from './components/pages/HomePage';
@@ -29,32 +29,20 @@ import {
 
 import './App.css';
 
-type LocalStorageType = {
-  dateValue: Date;
-  searchValue: string;
-  filteringValue: number;
-  sortValue: number;
-  currentPageValue: number;
-  productCounterValue: number;
-  priceCounterValue: number;
-  cartDataValue: [];
-};
-
-function App() {
+const App: React.FC = () => {
   //____Логика сохранения и получение данных при перезагрузке страницы
   const dispatch = useDispatch();
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (filteringId, sortId, searchValue) из состояния,
      с помощью селектора sortingAndFilteringSlice */
-  // ПОТОМ УБРАТЬ state: any!!!!!!!!____________________
   const { filteringId, sortId, searchValue } = useSelector(
-    (state: any) => state.sortingAndFilteringSlice
+    (state: RootState) => state.sortingAndFilteringSlice
   );
-  // ПОТОМ УБРАТЬ state: any!!!!!!!!____________________
-  const { currentPage } = useSelector((state: any) => state.paginationSlice);
-  // ПОТОМ УБРАТЬ state: any!!!!!!!!____________________
+  const { currentPage } = useSelector(
+    (state: RootState) => state.paginationSlice
+  );
   const { productCounter, priceCounter, cartData } = useSelector(
-    (state: any) => state.cartOfProductsSlice
+    (state: RootState) => state.cartOfProductsSlice
   );
 
   React.useEffect(() => {
@@ -77,7 +65,7 @@ function App() {
   React.useEffect(() => {
     if (checkLocalStorageForNull() === null) {
       // формируем объект с данными сеанса
-      const sessionData: LocalStorageType = {
+      const sessionData = {
         dateValue: new Date(),
         searchValue: searchValue,
         filteringValue: filteringId,
@@ -138,6 +126,6 @@ function App() {
       <Footer />
     </>
   );
-}
+};
 
 export default App;

@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { CartInitialStateType } from '../../@types/customType';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { CartInitialStateType, ProductCartType } from '../../@types/customType';
 
 // первое состояние
 const initialState: CartInitialStateType = {
@@ -12,13 +12,13 @@ export const cartOfProductsSlice = createSlice({
   name: 'cartOfProducts',
   initialState,
   reducers: {
-    setProductCounter(state, action) {
+    setProductCounter(state, action: PayloadAction<number>) {
       state.productCounter = action.payload;
     },
-    setPriceCounter(state, action) {
+    setPriceCounter(state, action: PayloadAction<number>) {
       state.priceCounter = action.payload;
     },
-    setCartData(state, action) {
+    setCartData(state, action: PayloadAction<ProductCartType[]>) {
       state.cartData = action.payload;
     },
   },

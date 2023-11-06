@@ -33,13 +33,15 @@ const HomePage: React.FC = () => {
     (state: RootState) => state.paginationSlice
   );
 
-  const [initialProductData, setInitialProductData] = React.useState([]);
+  const [initialProductData, setInitialProductData] = React.useState<
+    ProductType[]
+  >([]);
   const [updateProductData, setUpdateProductData] = useState<ProductType[]>([]);
   const [productsCards, setProductsCards] = React.useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [errorOccurred, setErrorOccurred] = React.useState(false);
   // создадим массив для отображения скелетона (он будет заполнен undefined)
-  const arrayForSkeleton = [...new Array(numberOfCardsPerPage)];
+  const arrayForSkeleton: undefined[] = [...new Array(numberOfCardsPerPage)];
 
   /* Используем хук useEffect, чтобы функция fetch() не отправляла постоянно запросы !
   Подробнее:
@@ -52,21 +54,21 @@ const HomePage: React.FC = () => {
     fetch('https://mommegan-c835e-default-rtdb.firebaseio.com/shoesData.json')
       // используем метод then() для обработки ответа от сервера
       // если ответ не содержит ошибок (если !response.ok равно false), код выполняется дальше
-      .then((response) => {
+      .then((response: Response) => {
         // если ответ содержит ошибку, генерируется исключение с сообщением 'Network response was not ok'
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         // если ответ успешен, вызывается метод json() для преобразования ответа в формат JSON
-        return response.json();
+        return response.json() as Promise<ProductType[]>;
       })
       // используется метод then() для обработки данных, полученных после преобразования
-      .then((data) => {
+      .then((data: ProductType[]) => {
         // вызываем функцию `setInitialProductData()` в нееи устанавливаем значение `data` в состояние компонента
         setInitialProductData(data);
       })
       // если происходит ошибка, выводим в консоль и устанавливается значение переменной 'setErrorOccurred(true)'
-      .catch((err) => {
+      .catch((err: Error) => {
         console.log(err, 'err');
         setErrorOccurred(true);
       })
