@@ -58,6 +58,11 @@ export type SortPropsType = {
   setUpdateProductData: Function;
 };
 
+export type NotFoundBlockPropsType = {
+  title: string;
+  description: string;
+};
+
 export type CartInitialStateType = {
   productCounter: number;
   priceCounter: number;
