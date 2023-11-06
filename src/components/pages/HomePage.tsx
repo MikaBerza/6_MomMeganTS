@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { ProductType } from '../../@types/customType';
 
 import {
   getSortedAndFilteredData,
@@ -19,23 +21,20 @@ import ProductCardSkeleton from '../folderProductCard/ProductCardSkeleton';
 import Pagination from '../folderPagination/Pagination';
 import PaginationSkeleton from '../folderPagination/PaginationSkeleton';
 import InsteadProduct from '../folderInsteadProduct/InsteadProduct';
-import { ProductType } from '../../@types/customType';
 
 const HomePage: React.FC = () => {
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (filteringId, sortId, searchValue) из состояния,
      с помощью селектора sortingAndFilteringSlice */
   const { filteringId, sortId, searchValue } = useSelector(
-    (state: any) => state.sortingAndFilteringSlice
+    (state: RootState) => state.sortingAndFilteringSlice
   );
   const { numberOfCardsPerPage, currentPage } = useSelector(
-    (state: any) => state.paginationSlice
+    (state: RootState) => state.paginationSlice
   );
 
   const [initialProductData, setInitialProductData] = React.useState([]);
-  const [updateProductData, setUpdateProductData] = useState<ProductType[]>(
-    []
-  );
+  const [updateProductData, setUpdateProductData] = useState<ProductType[]>([]);
   const [productsCards, setProductsCards] = React.useState<ProductType[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [errorOccurred, setErrorOccurred] = React.useState(false);
@@ -166,7 +165,7 @@ const HomePage: React.FC = () => {
                   // компонент, заглушки карточек товаров
                   return <ProductCardSkeleton key={index} />;
                 })
-              : productsCards.map((dataItem: any, index) => {
+              : productsCards.map((dataItem: ProductType, index) => {
                   // компонент, карточки товаров
                   return <ProductCard key={dataItem.id} dataItem={dataItem} />;
                 })}

@@ -10,3 +10,6 @@ export const store = configureStore({
     cartOfProductsSlice: cartOfProductsSlice,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export default store;

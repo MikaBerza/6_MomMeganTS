@@ -1,18 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSortId } from '../../redux/slices/sortingAndFilteringSlice';
+import { RootState } from '../../redux/store';
 import style from './Sort.module.css';
 import { listOfNamesOfSortingElements } from '../../assets/listsWithNames';
 import { getSortedData } from '../../modules/modules';
-import { SortPropsType  } from '../../@types/customType';
+import { SortPropsType } from '../../@types/customType';
 
-const Sort: React.FC<SortPropsType > = ({
+const Sort: React.FC<SortPropsType> = ({
   valueId,
   updateProductData,
   setUpdateProductData,
 }) => {
   const { searchValue } = useSelector(
-    (state: any) => state.sortingAndFilteringSlice
+    (state: RootState) => state.sortingAndFilteringSlice
   );
   const dispatch = useDispatch();
 
@@ -34,13 +35,15 @@ const Sort: React.FC<SortPropsType > = ({
     // получаем элемент страницы
     const elementBody = document.querySelector('body');
     // функция, закрыть по клику вне списка сортировки
-    const closeOnClickOutsideTheListSort = (event: any) => {
-      /* composedPath() - возвращает массив элементов, 
-      начиная с целевого элемента события и до корневого элемента документа */
-      const arrElem = event.composedPath();
+    const closeOnClickOutsideTheListSort = (event: MouseEvent) => {
       const elem = sortRef.current;
-      if (!arrElem.includes(elem)) {
-        setOpen(false);
+      if (elem !== null) {
+        /* composedPath() - возвращает массив элементов, 
+          начиная с целевого элемента события и до корневого элемента документа */
+        const arrElem = event.composedPath();
+        if (!arrElem.includes(elem)) {
+          setOpen(false);
+        }
       }
     };
 

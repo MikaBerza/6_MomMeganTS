@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import style from './OrderResult.module.css';
 
 const OrderResult: React.FC = () => {
@@ -7,7 +8,7 @@ const OrderResult: React.FC = () => {
      для получения значений (productCounter, priceCounter, cartData) из состояния,
      с помощью селектора cartOfProductsSlice */
   const { productCounter, priceCounter } = useSelector(
-    (state: any) => state.cartOfProductsSlice
+    (state: RootState) => state.cartOfProductsSlice
   );
 
   return (

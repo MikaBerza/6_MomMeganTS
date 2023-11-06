@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import style from './Header.module.css';
 import mLogo from '../../assets/img/M-logo.png';
 
@@ -8,7 +9,7 @@ const Header: React.FC = () => {
      для получения значений (productCounter) из состояния,
      с помощью селектора cartOfProductsSlice */
   const { productCounter, priceCounter } = useSelector(
-    (state: any) => state.cartOfProductsSlice
+    (state: RootState) => state.cartOfProductsSlice
   );
 
   return (

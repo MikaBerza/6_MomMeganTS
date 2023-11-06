@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { SortingAndFilteringInitialStateType } from '../../@types/customType';
 
 // первое состояние
-const initialState = {
+const initialState: SortingAndFilteringInitialStateType = {
   filteringId: 0,
   sortId: 0,
   searchValue: '',

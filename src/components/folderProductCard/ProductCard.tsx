@@ -6,23 +6,22 @@ import {
   setPriceCounter,
   setCartData,
 } from '../../redux/slices/cartOfProductsSlice';
+import { RootState } from '../../redux/store';
+import { ProductCartType, ProductType } from '../../@types/customType';
 
 import style from './ProductCard.module.css';
 import { listOfSeasonTitles } from '../../assets/listsWithNames';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../folderButton/Button';
-import { ProductType } from '../../@types/customType';
 
-const ProductCard: React.FC<{ dataItem: ProductType }> = ({
-  dataItem,
-}) => {
+const ProductCard: React.FC<{ dataItem: ProductType }> = ({ dataItem }) => {
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
   /* используем хук useSelector из библиотеки Redux 
      для получения значений (productCounter, priceCounter, cartData) из состояния,
      с помощью селектора cartOfProductsSlice */
   const { productCounter, priceCounter, cartData } = useSelector(
-    (state: any) => state.cartOfProductsSlice
+    (state: RootState) => state.cartOfProductsSlice
   );
 
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ const ProductCard: React.FC<{ dataItem: ProductType }> = ({
   // функция, добавить товар в корзину
   const addAnItemToTheCart = () => {
     // формируем, данные добавленного товара в корзину
-    const dataOfTheAddedProduct = {
+    const dataOfTheAddedProduct: ProductCartType = {
       id: uuidv4(),
       imageUrl: dataItem.imageUrl,
       title: dataItem.title,

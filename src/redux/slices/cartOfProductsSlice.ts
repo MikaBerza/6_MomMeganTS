@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { CartInitialStateType } from '../../@types/customType';
 
 // первое состояние
-const initialState = {
+const initialState: CartInitialStateType = {
   productCounter: 0,
   priceCounter: 0,
   cartData: [],

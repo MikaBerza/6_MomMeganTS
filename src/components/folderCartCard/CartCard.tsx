@@ -6,6 +6,7 @@ import {
   setPriceCounter,
   setCartData,
 } from '../../redux/slices/cartOfProductsSlice';
+import { RootState } from '../../redux/store';
 
 import style from './CartCard.module.css';
 import { listOfSeasonTitles } from '../../assets/listsWithNames';
@@ -18,7 +19,7 @@ const CartCard: React.FC<ProductCartType> = ({ id, imageUrl, title, type, sizes,
      для получения значений (productCounter, priceCounter, cartData) из состояния,
      с помощью селектора cartOfProductsSlice */
   const { productCounter, priceCounter, cartData } = useSelector(
-    (state: any) => state.cartOfProductsSlice
+    (state: RootState) => state.cartOfProductsSlice
   );
   const dispatch = useDispatch();
 

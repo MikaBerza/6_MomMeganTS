@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { PaginationInitialStateType } from '../../@types/customType';
 
 // первое состояние
-const initialState = {
+const initialState: PaginationInitialStateType = {
   numberOfCardsPerPage: 8,
   currentPage: 0,
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSearchValue } from '../../redux/slices/sortingAndFilteringSlice';
+import { RootState } from '../../redux/store';
 import style from './Search.module.css';
 import debounce from 'lodash.debounce';
 
@@ -9,7 +10,7 @@ const Search: React.FC = () => {
   Чтобы обратиться к DOM элементу через React */
   const inputRef = React.useRef<HTMLInputElement>(null);
   const { searchValue } = useSelector(
-    (state: any) => state.sortingAndFilteringSlice
+    (state: RootState) => state.sortingAndFilteringSlice
   );
   const dispatch = useDispatch();
 

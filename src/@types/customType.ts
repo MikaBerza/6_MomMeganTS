@@ -21,11 +21,11 @@ export type ProductType = {
 };
 
 export type ProductCartType = {
-  id: number
+  id: string;
   imageUrl: string;
   title: string;
-  type: number
-  sizes: number[];
+  type: number;
+  sizes: number;
   price: number;
 };
 
@@ -52,8 +52,25 @@ export type MainTitlePropsType = {
   styleName?: string;
 };
 
-export type SortPropsType  = {
-  valueId: any;
-  updateProductData: any;
-  setUpdateProductData: any;
+export type SortPropsType = {
+  valueId: number;
+  updateProductData: ProductType[];
+  setUpdateProductData: Function;
+};
+
+export type CartInitialStateType = {
+  productCounter: number;
+  priceCounter: number;
+  cartData: ProductCartType[];
+};
+
+export type PaginationInitialStateType = {
+  numberOfCardsPerPage: number;
+  currentPage: number;
+};
+
+export type SortingAndFilteringInitialStateType = {
+  filteringId: number;
+  sortId: number;
+  searchValue: string;
 };

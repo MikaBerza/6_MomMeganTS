@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import emptyCartImg from '../../assets/img/emptyCart.png';
 import MainTitle from '../folderMainTitle/MainTitle';
 import CartCard from '../folderCartCard/CartCard';
@@ -13,7 +14,7 @@ const CartPage: React.FC = () => {
      для получения значений (productCounter, priceCounter, cartData) из состояния,
      с помощью селектора cartOfProductsSlice */
   const { productCounter, cartData } = useSelector(
-    (state: any) => state.cartOfProductsSlice
+    (state: RootState) => state.cartOfProductsSlice
   );
 
   return productCounter > 0 ? (
