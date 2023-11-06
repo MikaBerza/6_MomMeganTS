@@ -123,7 +123,7 @@ const App: React.FC = () => {
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </div>
-      <Footer />
+      <Footer copyright={'© 2023 Copyright:'} author={'MikaBerza'}/>
     </>
   );
 };

@@ -68,6 +68,11 @@ export type NotFoundBlockPropsType = {
   description: string;
 };
 
+export type FooterPropsType = {
+  copyright: string;
+  author: string;
+};
+
 export type CartInitialStateType = {
   productCounter: number;
   priceCounter: number;

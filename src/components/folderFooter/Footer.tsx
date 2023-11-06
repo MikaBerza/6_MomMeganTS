@@ -1,11 +1,12 @@
+import { FooterPropsType } from '../../@types/customType';
 import style from '../folderFooter/footer.module.css';
 
-const Footer: React.FC = () => {
+const Footer: React.FC<FooterPropsType> = ({ copyright, author }) => {
   return (
     <footer className={style['wrapper']}>
-      <p className={style['text']}>© 2023 Copyright:</p>
+      <p className={style['text']}>{copyright}</p>
       <a className={style['text-link']} href='https://github.com/MikaBerza'>
-        MikaBerza
+        {author}
         <svg
           className={style['logo-link']}
           width='16px'
