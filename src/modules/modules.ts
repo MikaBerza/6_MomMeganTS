@@ -3,7 +3,7 @@ import {
   listOfFilteringItemNames,
 } from '../assets/listsWithNames';
 
-import {LocalStorageType, ProductType} from '../@types/customType';
+import { LocalStorageType, ProductType } from '../@types/customType';
 
 /* Бок с функциями для сортировки и фильтрации_________________________________________________*/
 // функция, преобразовать массив элементов в массив с индексами
@@ -37,20 +37,16 @@ export const getSortedData = (
   if (sortingNumber === alphabet) {
     // Для правильной сортировки слов по русскому алфавиту используем метод localeCompare()
     // с использованием правил локали для англ.яз "en"
-    sortFunction = (a: ProductType, b: ProductType) =>
-      a['title'].localeCompare(b['title'], 'en');
+    sortFunction = (a, b) => a['title'].localeCompare(b['title'], 'en');
   } else if (sortingNumber === priceAscending) {
     // Для сортировки по числовым свойствам (price)
-    sortFunction = (a: ProductType, b: ProductType) =>
-      a['price'] - b['price'];
+    sortFunction = (a, b) => a['price'] - b['price'];
   } else if (sortingNumber === priceDescending) {
     // Для сортировки по числовым свойствам (price)
-    sortFunction = (a: ProductType, b: ProductType) =>
-      b['price'] - a['price'];
+    sortFunction = (a, b) => b['price'] - a['price'];
   } else if (sortingNumber === rating) {
     // Для сортировки по числовым свойствам (rating)
-    sortFunction = (a: ProductType, b: ProductType) =>
-      b['rating'] - a['rating'];
+    sortFunction = (a, b) => b['rating'] - a['rating'];
   }
   // Сортируем и возвращаем отсортированный массив
   // return copyDataArray.sort(sortFunction);
