@@ -140,6 +140,9 @@ a {
 }
 
 .loading {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   margin: auto;
   font-size: 36px;
 }

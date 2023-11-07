@@ -16,7 +16,7 @@ import {
 import { RootState } from './redux/store';
 
 import Header from './components/folderHeader/Header';
-import HomePage from './components/pages/HomePage';
+// import HomePage from './components/pages/HomePage';
 import Footer from './components/folderFooter/Footer';
 
 import {
@@ -24,10 +24,16 @@ import {
   writeToLocalStorage,
   returnAnObjectWithDataFromLocalStorage,
 } from './modules/modules';
+
 import './App.css';
+import { FadeLoader } from 'react-spinners';
 
 // React.lazy функция позволяет визуализировать динамический импорт как обычный компонент
 // webpackChunkName:"CartPage" - название частей кода
+const HomePage = React.lazy(
+  () => import(/*webpackChunkName:"HomePage"*/ './components/pages/HomePage')
+);
+
 const CartPage = React.lazy(
   () => import(/*webpackChunkName:"CartPage"*/ './components/pages/CartPage')
 );
@@ -126,25 +132,20 @@ const App: React.FC = () => {
     <>
       <div className='wrapper'>
         <Header title={'Megan'} subtitle={'Одежда, которая вдохновляет'} />
-        <Routes>
-          <Route path='/6_MomMeganTS' element={<HomePage />} />
-          <Route
-            path='/6_MomMeganTS/CartPage'
-            element={
-              <Suspense fallback={<div className='loading'>Loading...</div>}>
-                <CartPage />
-              </Suspense>
-            }
-          />
-          <Route
-            path='*'
-            element={
-              <Suspense fallback={<div className='loading'>Loading...</div>}>
-                <NotFoundPage />
-              </Suspense>
-            }
-          />
-        </Routes>
+        <Suspense
+          fallback={
+            <div className='loading'>
+              Loading...
+              <FadeLoader color='#444' />
+            </div>
+          }
+        >
+          <Routes>
+            <Route path='/6_MomMeganTS' element={<HomePage />} />
+            <Route path='/6_MomMeganTS/CartPage' element={<CartPage />} />
+            <Route path='/*' element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
       </div>
       <Footer copyright={'© 2023 Copyright:'} author={'MikaBerza'} />
     </>
