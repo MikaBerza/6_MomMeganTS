@@ -139,6 +139,11 @@ a {
   visibility: hidden;
 }
 
+.loading {
+  margin: auto;
+  font-size: 36px;
+}
+
 /* 
 ___ Эти стили применяю если у сервера превышен лимит по запросам      
 <h4

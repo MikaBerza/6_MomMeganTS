@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,8 +17,6 @@ import { RootState } from './redux/store';
 
 import Header from './components/folderHeader/Header';
 import HomePage from './components/pages/HomePage';
-import CartPage from './components/pages/CartPage';
-import NotFoundPage from './components/pages/NotFoundPage';
 import Footer from './components/folderFooter/Footer';
 
 import {
@@ -26,8 +24,19 @@ import {
   writeToLocalStorage,
   returnAnObjectWithDataFromLocalStorage,
 } from './modules/modules';
-
 import './App.css';
+
+// React.lazy функция позволяет визуализировать динамический импорт как обычный компонент
+// webpackChunkName:"CartPage" - название частей кода
+const CartPage = React.lazy(
+  () => import(/*webpackChunkName:"CartPage"*/ './components/pages/CartPage')
+);
+const NotFoundPage = React.lazy(
+  () =>
+    import(
+      /*webpackChunkName:"NotFoundPage"*/ './components/pages/NotFoundPage'
+    )
+);
 
 const App: React.FC = () => {
   //____Логика сохранения и получение данных при перезагрузке страницы
@@ -119,11 +128,25 @@ const App: React.FC = () => {
         <Header title={'Megan'} subtitle={'Одежда, которая вдохновляет'} />
         <Routes>
           <Route path='/6_MomMeganTS' element={<HomePage />} />
-          <Route path='/6_MomMeganTS/CartPage' element={<CartPage />} />
-          <Route path='*' element={<NotFoundPage />} />
+          <Route
+            path='/6_MomMeganTS/CartPage'
+            element={
+              <Suspense fallback={<div className='loading'>Loading...</div>}>
+                <CartPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path='*'
+            element={
+              <Suspense fallback={<div className='loading'>Loading...</div>}>
+                <NotFoundPage />
+              </Suspense>
+            }
+          />
         </Routes>
       </div>
-      <Footer copyright={'© 2023 Copyright:'} author={'MikaBerza'}/>
+      <Footer copyright={'© 2023 Copyright:'} author={'MikaBerza'} />
     </>
   );
 };
