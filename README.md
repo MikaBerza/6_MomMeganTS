@@ -1,3 +1,5 @@
+<h2>Начало проекта см.&#129488;<a href="https://github.com/MikaBerza/6_MomMegan" target="_blank">6_MomMegan</a></h2>
+
 #### :rocket:Запуск проекта
 
 1. Скачайте Архив(ZIP) "6_MomMeganTS";
@@ -8,4 +10,3 @@
 6. Запустите приложение, командой в терминале **"npm start"**;
 
 ---
-
