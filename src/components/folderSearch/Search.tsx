@@ -5,7 +5,7 @@ import { RootState } from '../../redux/store';
 import style from './Search.module.css';
 import debounce from 'lodash.debounce';
 
-const Search: React.FC = () => {
+const Search: React.FC = React.memo(() => {
   /* Используем хук useRef из библиотеки React для создания ссылки на DOM-элемент.
   Чтобы обратиться к DOM элементу через React */
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -30,7 +30,7 @@ const Search: React.FC = () => {
     Если новый вызов происходит во время ожидания выполнения задержанной операции,
     (debounce) начинает отсчет времени задержки заново. 
     SetTimeout же независимо продолжает исходный отсчет времени. */
-    debounce((str) => {
+    debounce((str: string) => {
       // обновляем глобально значение поиска
       dispatch(setSearchValue(str));
     }, 150),
@@ -71,6 +71,6 @@ const Search: React.FC = () => {
       )}
     </section>
   );
-};
+});
 
 export default Search;
