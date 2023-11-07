@@ -1,7 +1,8 @@
+import React from 'react';
 import { FooterPropsType } from '../../@types/customType';
 import style from '../folderFooter/footer.module.css';
 
-const Footer: React.FC<FooterPropsType> = ({ copyright, author }) => {
+const Footer: React.FC<FooterPropsType> = React.memo(({ copyright, author }) => {
   return (
     <footer className={style['wrapper']}>
       <p className={style['text']}>{copyright}</p>
@@ -25,6 +26,6 @@ const Footer: React.FC<FooterPropsType> = ({ copyright, author }) => {
       </a>
     </footer>
   );
-};
+});
 
 export default Footer;
